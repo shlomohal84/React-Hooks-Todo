@@ -23,13 +23,10 @@ function TodoApp() {
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
-  const editTodo = (id, task) => {
+  const editTodo = (id, newTask) => {
     setTodos(
       todos.map((todo) => {
-        if (id === todo.id) {
-          return { ...todo, task };
-        }
-        return { ...todo };
+        return id === todo.id ? { ...todo, task: newTask } : { ...todo };
       })
     );
   };
@@ -37,10 +34,9 @@ function TodoApp() {
   const toggleCompleted = (id, completed) => {
     setTodos(
       todos.map((todo) => {
-        if (id === todo.id) {
-          return { ...todo, completed: !completed };
-        }
-        return { ...todo };
+        return id === todo.id
+          ? { ...todo, completed: !completed }
+          : { ...todo };
       })
     );
   };
