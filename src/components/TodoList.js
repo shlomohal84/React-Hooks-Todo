@@ -3,30 +3,26 @@ import { Paper, List, Divider } from "@material-ui/core";
 
 import Todo from "./Todo";
 
-function TodoList(props) {
-  return (
-    <Paper>
-      {props.todos.length ? (
+function TodoList({ todos, deleteTodo, editTodo, toggleCompleted }) {
+  if (todos.length)
+    return (
+      <Paper>
         <List>
-          {props.todos.map((todo, idx) => (
-            <Fragment key={todo.task}>
-              <>
-                <Todo
-                  task={todo.task}
-                  completed={todo.completed}
-                  id={todo.id}
-                  deleteTodo={props.deleteTodo}
-                  editTodo={props.editTodo}
-                  toggleCompleted={props.toggleCompleted}
-                />
-                {idx < props.todos.length - 1 && <Divider />}
-              </>
+          {todos.map((todo, idx) => (
+            <Fragment key={todo.id}>
+              <Todo
+                {...todo}
+                deleteTodo={deleteTodo}
+                editTodo={editTodo}
+                toggleCompleted={toggleCompleted}
+              />
+              {idx < todos.length - 1 && <Divider />}
             </Fragment>
           ))}
         </List>
-      ) : null}
-    </Paper>
-  );
+      </Paper>
+    );
+  return null;
 }
 
 export default TodoList;

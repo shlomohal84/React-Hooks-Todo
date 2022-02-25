@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+//eslint-disable-next-line
+import { useEffect } from "react";
+import useTodoState from "./hooks/useTodoState";
 import { Typography, Paper, AppBar, Toolbar, Grid } from "@material-ui/core";
-import { v4 as uuid4 } from "uuid";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
@@ -11,35 +12,13 @@ function TodoApp() {
   //   { id: 2, task: "Wash Car", completed: true },
   //   { id: 3, task: "Grow Beard", completed: false },
   // ];
-  const [todos, setTodos] = useState(initialTodos);
+
+  const { todos, addTodo, deleteTodo, toggleCompleted, editTodo } =
+    useTodoState(initialTodos);
 
   useEffect(() => {
     window.localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-
-  const addTodo = (newTodoText) => {
-    setTodos([...todos, { id: uuid4(), task: newTodoText, completed: false }]);
-  };
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-  const editTodo = (id, newTask) => {
-    setTodos(
-      todos.map((todo) => {
-        return id === todo.id ? { ...todo, task: newTask } : { ...todo };
-      })
-    );
-  };
-
-  const toggleCompleted = (id, completed) => {
-    setTodos(
-      todos.map((todo) => {
-        return id === todo.id
-          ? { ...todo, completed: !completed }
-          : { ...todo };
-      })
-    );
-  };
 
   return (
     <Paper
