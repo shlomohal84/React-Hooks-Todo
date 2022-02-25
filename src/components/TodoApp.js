@@ -1,17 +1,16 @@
-//eslint-disable-next-line
-import { useEffect } from "react";
 import useTodoState from "./hooks/useTodoState";
+import { useEffect } from "react";
 import { Typography, Paper, AppBar, Toolbar, Grid } from "@material-ui/core";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
 function TodoApp() {
-  const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
-  // const initialTodos = [
-  //   { id: 1, task: "Clean Fishtank", completed: false },
-  //   { id: 2, task: "Wash Car", completed: true },
-  //   { id: 3, task: "Grow Beard", completed: false },
-  // ];
+  const initialTodos = [
+    { id: 1, task: "Clean Fishtank", completed: false },
+    { id: 2, task: "Wash Car", completed: true },
+    { id: 3, task: "Grow Beard", completed: false },
+  ];
+  // const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
 
   const { todos, addTodo, deleteTodo, toggleCompleted, editTodo } =
     useTodoState(initialTodos);

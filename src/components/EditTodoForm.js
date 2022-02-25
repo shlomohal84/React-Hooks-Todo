@@ -26,21 +26,3 @@ function EditTodoForm({ id, task, toggleIsEditing, editTodo }) {
 }
 
 export default EditTodoForm;
-
-// <div
-//   style={{
-//     display: "flex",
-//     justifyContent: "flex-end",
-//     width: "100%",
-//   }}
-// >
-//   <TextField
-//     value={value}
-//     onChange={handleChange}
-//     style={{ width: "max-content" }}
-//   />
-//   <div>
-//     <button onClick={handleUpdate}>Save</button>
-//     <button onClick={toggleEdit}>cancel</button>
-//   </div>
-// </div>
