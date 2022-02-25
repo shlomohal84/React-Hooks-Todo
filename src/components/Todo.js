@@ -21,7 +21,7 @@ function ToDo({ id, task, completed, deleteTodo, editTodo, toggleCompleted }) {
     toggleCompleted(id, completed);
   };
   return (
-    <ListItem>
+    <ListItem style={{ height: "64px" }}>
       {isEditing ? (
         <EditTodoForm
           editTodo={editTodo}

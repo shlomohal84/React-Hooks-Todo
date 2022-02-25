@@ -7,7 +7,7 @@ function TodoList(props) {
   return (
     <Paper style={{ display: !props.todos.length && "none" }}>
       <List>
-        {props.todos.map((todo) => (
+        {props.todos.map((todo, idx) => (
           <Fragment key={todo.task}>
             <>
               <Todo
@@ -18,7 +18,7 @@ function TodoList(props) {
                 editTodo={props.editTodo}
                 toggleCompleted={props.toggleCompleted}
               />
-              <Divider />
+              {idx < props.todos.length - 1 && <Divider />}
             </>
           </Fragment>
         ))}
