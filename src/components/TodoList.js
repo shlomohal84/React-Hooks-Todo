@@ -5,24 +5,26 @@ import Todo from "./Todo";
 
 function TodoList(props) {
   return (
-    <Paper style={{ display: !props.todos.length && "none" }}>
-      <List>
-        {props.todos.map((todo, idx) => (
-          <Fragment key={todo.task}>
-            <>
-              <Todo
-                task={todo.task}
-                completed={todo.completed}
-                id={todo.id}
-                deleteTodo={props.deleteTodo}
-                editTodo={props.editTodo}
-                toggleCompleted={props.toggleCompleted}
-              />
-              {idx < props.todos.length - 1 && <Divider />}
-            </>
-          </Fragment>
-        ))}
-      </List>
+    <Paper>
+      {props.todos.length ? (
+        <List>
+          {props.todos.map((todo, idx) => (
+            <Fragment key={todo.task}>
+              <>
+                <Todo
+                  task={todo.task}
+                  completed={todo.completed}
+                  id={todo.id}
+                  deleteTodo={props.deleteTodo}
+                  editTodo={props.editTodo}
+                  toggleCompleted={props.toggleCompleted}
+                />
+                {idx < props.todos.length - 1 && <Divider />}
+              </>
+            </Fragment>
+          ))}
+        </List>
+      ) : null}
     </Paper>
   );
 }
