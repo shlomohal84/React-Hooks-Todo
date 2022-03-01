@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
   Checkbox,
   ListItem,
@@ -8,9 +9,11 @@ import {
 import useToggleState from "./hooks/useToggleState";
 import { Delete as DeleteIcon, Edit as EditIcon } from "@material-ui/icons";
 
+import { TodosContext } from "./context/todos.context";
 import EditTodoForm from "./EditTodoForm";
 
-function ToDo({ id, task, completed, deleteTodo, editTodo, toggleCompleted }) {
+function ToDo({ id, task, completed }) {
+  const { deleteTodo, toggleCompleted } = useContext(TodosContext);
   const [isEditing, toggleIsEditing] = useToggleState(false);
 
   const handleDelete = () => {
@@ -23,13 +26,7 @@ function ToDo({ id, task, completed, deleteTodo, editTodo, toggleCompleted }) {
   return (
     <ListItem style={{ height: "64px" }}>
       {isEditing ? (
-        <EditTodoForm
-          editTodo={editTodo}
-          id={id}
-          task={task}
-          // isEditing={isEditing}
-          toggleIsEditing={toggleIsEditing}
-        />
+        <EditTodoForm id={id} task={task} toggleIsEditing={toggleIsEditing} />
       ) : (
         <>
           <Checkbox
