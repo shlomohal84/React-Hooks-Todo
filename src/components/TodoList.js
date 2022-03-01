@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Fragment } from "react";
 import { Paper, List, Divider } from "@material-ui/core";
 import { TodosContext } from "./context/todos.context";
+
 import Todo from "./Todo";
 
 function TodoList() {

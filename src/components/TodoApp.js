@@ -1,13 +1,11 @@
-import { useEffect } from "react";
 import { Typography, Paper, AppBar, Toolbar, Grid } from "@material-ui/core";
-
 import { TodosProvider } from "./context/todos.context";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
 function TodoApp() {
   // useEffect(() => {
-  //   window.localStorage.setItem("todos", JSON.stringify(todos));
+  //   window.localStorage.setItem("tJSONodos", .stringify(todos));
   // }, [todos]);
 
   return (
