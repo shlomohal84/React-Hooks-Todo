@@ -13,7 +13,11 @@ function EditTodoForm({ id, task, toggleIsEditing }) {
     <form
       onSubmit={(evt) => {
         evt.preventDefault();
-        dispatch({ type: "EDIT", id: id, newTask: value });
+        dispatch({
+          type: "EDIT",
+          id: id,
+          newTask: value,
+        });
         toggleIsEditing();
         reset();
       }}

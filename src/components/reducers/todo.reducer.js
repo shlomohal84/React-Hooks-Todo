@@ -14,7 +14,7 @@ const reducer = (state, action) => {
     case "EDIT":
       return state.map((todo) => {
         return todo.id === action.id
-          ? { ...todo, task: action.newTask }
+          ? { ...todo, task: action.newTask, completed: false }
           : { ...todo };
       });
     default:

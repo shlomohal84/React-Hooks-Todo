@@ -15,7 +15,7 @@ import EditTodoForm from "./EditTodoForm";
 function Todo({ id, task, completed }) {
   const [isEditing, toggleIsEditing] = useToggleState(false);
   const dispatch = useContext(DispatchContext);
-  console.log("TODO RE-RENDER", task);
+  // console.log("TODO RE-RENDER", task);
   return (
     <ListItem style={{ height: "64px" }}>
       {isEditing ? (
