@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import {
   Checkbox,
   ListItem,
@@ -12,10 +12,10 @@ import { Delete as DeleteIcon, Edit as EditIcon } from "@material-ui/icons";
 import { DispatchContext } from "./context/todos.context";
 import EditTodoForm from "./EditTodoForm";
 
-function ToDo({ id, task, completed }) {
+function Todo({ id, task, completed }) {
   const [isEditing, toggleIsEditing] = useToggleState(false);
   const dispatch = useContext(DispatchContext);
-
+  console.log("TODO RE-RENDER", task);
   return (
     <ListItem style={{ height: "64px" }}>
       {isEditing ? (
@@ -54,4 +54,4 @@ function ToDo({ id, task, completed }) {
   );
 }
 
-export default ToDo;
+export default memo(Todo);
