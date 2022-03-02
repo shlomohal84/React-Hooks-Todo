@@ -9,20 +9,13 @@ import {
 import useToggleState from "./hooks/useToggleState";
 import { Delete as DeleteIcon, Edit as EditIcon } from "@material-ui/icons";
 
-import { TodosContext } from "./context/todos.context";
+import { DispatchContext } from "./context/todos.context";
 import EditTodoForm from "./EditTodoForm";
 
 function ToDo({ id, task, completed }) {
-  const { deleteTodo, toggleCompleted } = useContext(TodosContext);
   const [isEditing, toggleIsEditing] = useToggleState(false);
+  const dispatch = useContext(DispatchContext);
 
-  const handleDelete = () => {
-    deleteTodo(id);
-  };
-
-  const handleIsCompleted = () => {
-    toggleCompleted(id, completed);
-  };
   return (
     <ListItem style={{ height: "64px" }}>
       {isEditing ? (
@@ -32,20 +25,23 @@ function ToDo({ id, task, completed }) {
           <Checkbox
             tabIndex={-1}
             checked={completed}
-            onChange={handleIsCompleted}
+            onChange={() => dispatch({ type: "TOGGLE", id: id })}
           />
           <ListItemText
             style={{ textDecoration: completed ? "line-through" : "none" }}
           >
             <span
-              onClick={handleIsCompleted}
+              onClick={() => dispatch({ type: "TOGGLE", id: id })}
               style={{ userSelect: "none", cursor: "pointer" }}
             >
               {task}
             </span>
           </ListItemText>
           <ListItemSecondaryAction>
-            <IconButton aria-label="Delete" onClick={handleDelete}>
+            <IconButton
+              aria-label="Delete"
+              onClick={() => dispatch({ type: "DELETE", id: id })}
+            >
               <DeleteIcon />
             </IconButton>
             <IconButton aria-label="edit" onClick={toggleIsEditing}>

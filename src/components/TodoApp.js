@@ -4,10 +4,6 @@ import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
 function TodoApp() {
-  // useEffect(() => {
-  //   window.localStorage.setItem("tJSONodos", .stringify(todos));
-  // }, [todos]);
-
   return (
     <Paper
       style={{
